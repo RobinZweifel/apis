@@ -1,0 +1,25 @@
+package ch.bbw.rz.controller;
+
+import ch.bbw.rz.service.WeatherService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import java.io.IOException;
+
+
+@Controller
+public class WeatherController {
+
+    @Autowired
+    WeatherService service;
+
+    @GetMapping("/weather")
+    public String getAnimals(Model model) throws IOException {
+        model.addAttribute("weather");
+        service.getWeatherData();
+        return "weather";
+    }
+
+}
